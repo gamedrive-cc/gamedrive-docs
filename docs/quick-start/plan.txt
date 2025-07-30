@@ -1,0 +1,4 @@
+-create new vortial good
+-create enpoint to claim virtual good in 5 second
+-call endpoint
+-show how to call endpoint in client sdk
