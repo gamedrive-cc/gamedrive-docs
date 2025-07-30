@@ -2,7 +2,7 @@
 all json file under path /rooms/[roomName]/schemas/ and all subdirectories will be load and convert to schema
 
 ### Schema Example
-{
+<!-- {
       "name": "Player",
       "fields": [
           {
@@ -40,4 +40,4 @@ all json file under path /rooms/[roomName]/schemas/ and all subdirectories will 
           }
       ]
   }
-
+ -->

@@ -40,10 +40,10 @@ export default function (request: Request, response: Response) {
 
 
 use  option "_id": false inside nested customdata to avoid create _id in nested schema
-
+<!-- 
   "options": {
         "_id": false
-    },
+    }, -->
 
 # Example of using customdata
 ```json

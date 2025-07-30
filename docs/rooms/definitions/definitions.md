@@ -3,8 +3,8 @@
       https://docs.colyseus.io/colyseus/server/api/#filterbyoptions
 ### Definitions Example
 `
-{
+<!-- {
       "filterBy": ["mode"],
       "sortBy": { "clients" : -1 }
-}
+} -->
 `

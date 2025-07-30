@@ -59,8 +59,8 @@ endpoint request will Timeout error in 10 seconds
 
  if use response.sendError() or any error, status code will be override to 400
 
-  exposedEndpoint will not have {errors:{}, data:{}} format
- sendError("message") will return 
+  <!-- exposedEndpoint will not have {errors:{}, data:{}} format -->
+ <!-- sendError("message") will return 
  {
   code: TEXT_ENDPOINT_SEND_ERROR
   message: "message"
@@ -68,4 +68,4 @@ endpoint request will Timeout error in 10 seconds
 
  send("message") will return 
   "message"
- -
+ - -->
