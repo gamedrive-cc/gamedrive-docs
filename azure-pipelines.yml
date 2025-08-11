@@ -1,0 +1,48 @@
+trigger:
+  - master
+
+variables:
+  ENV_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+  SERVICE_NAME: $(Build.Repository.Name)
+  SOURCE_VERSION: $(Build.SourceVersion)
+  BUILD_ID: $(Build.BuildId)
+  WORKSPACE: $(Build.Repository.LocalPath)
+
+stages:
+  - stage: BuildAndDeploy
+    displayName: Build and Deploy to Cloudflare Pages
+    jobs:
+      - job: BuildDeployJob
+        displayName: Build and Deploy
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - checkout: self
+            persistCredentials: true
+            
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: 'Install Node.js'
+
+          - script: npm install -g wrangler
+            displayName: 'Install Wrangler CLI'
+
+          - script: |
+              npm install
+              npm run build
+            displayName: 'Install dependencies and build project'
+
+          - script: |
+              wrangler pages publish ./build --branch master --commit-dirty=true
+            env:
+              CF_API_TOKEN: $(CF_API_TOKEN)
+            displayName: 'Deploy to Cloudflare Pages (Production)'
+          
+          - script: |
+              git config --global user.email "nop.tanakhon@gmail.com"
+              git config --global user.name "NopTanakhon"
+              TAG_NAME="${ENV_NAME}-${BUILD_ID}"
+              git tag "$TAG_NAME"
+              git push origin "$TAG_NAME"
+            displayName: 'Tag and Push'
