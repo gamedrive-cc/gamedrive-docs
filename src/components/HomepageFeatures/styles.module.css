@@ -5,6 +5,18 @@
   width: 100%;
 }
 
+.featuresContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.feature {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
 .featureSvg {
   height: 200px;
   width: 200px;

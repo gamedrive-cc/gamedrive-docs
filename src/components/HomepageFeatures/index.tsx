@@ -7,6 +7,7 @@ type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: ReactNode;
+  href: string;
 };
 
 const FeatureList: FeatureItem[] = [
@@ -19,6 +20,7 @@ const FeatureList: FeatureItem[] = [
         used to get your website up and running quickly.
       </>
     ),
+    href: 'https://www.gamedrive.com',
   },
   {
     title: 'Login to console',
@@ -29,12 +31,13 @@ const FeatureList: FeatureItem[] = [
         ahead and move your docs into the <code>docs</code> directory.
       </>
     ),
+    href: 'https://console.gamedrive.cc',
   }
 ];
 
 function Feature({ title, Svg, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={styles.feature}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
@@ -50,7 +53,7 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <div className={styles.featuresContainer}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
