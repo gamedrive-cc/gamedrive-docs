@@ -22,7 +22,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     href: 'https://www.gamedrive.cc',
-    buttonText: 'Go to Website'
+    buttonText: 'Go to Website 🌐'
   },
   {
     title: `Console`,
@@ -33,7 +33,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     href: 'https://console.gamedrive.cc',
-    buttonText: `Sign In to Console`
+    buttonText: `Sign In to Console 🔑`
   }
 ];
 
