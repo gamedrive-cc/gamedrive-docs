@@ -63,23 +63,24 @@ const config: Config = {
         alt: 'GameDrive Logo',
         src: 'img/gamedrive-logo.png',
       },
-      items: [{
-        type: 'doc',
-        docId: 'intro',
-        position: 'left',
-        label: 'Docs',
-      },
-      {
-        type: 'doc',
-        docId: 'api/intro',
-        position: 'left',
-        label: 'API',
-      },
-      {
-        href: 'https://github.com/facebook/docusaurus',
-        label: 'GitHub',
-        position: 'right',
-      },
+      items: [
+        {
+          type: 'doc',
+          docId: 'intro',
+          position: 'left',
+          label: 'Docs',
+        },
+        {
+          type: 'doc',
+          docId: 'api/intro',
+          position: 'left',
+          label: 'API',
+        },
+        {
+          href: 'https://github.com/facebook/docusaurus',
+          label: 'GitHub',
+          position: 'right',
+        },
       ],
     },
     footer: {
