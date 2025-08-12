@@ -26,7 +26,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: `Console`,
-    image: `img/gamedrive-white.png`,
+    image: `img/gamedrive-black-border.png`,
     description: (
       <>
         Start manage your backend
