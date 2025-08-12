@@ -2,12 +2,14 @@ import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
 
 type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: ReactNode;
   href: string;
+  buttonText: string
 };
 
 const FeatureList: FeatureItem[] = [
@@ -16,26 +18,26 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Check out landing page to new updates
       </>
     ),
-    href: 'https://www.gamedrive.com',
+    href: 'https://www.gamedrive.cc',
+    buttonText: 'Go to Website'
   },
   {
-    title: 'Login to console',
+    title: `Console`,
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Start manage your backend
       </>
     ),
     href: 'https://console.gamedrive.cc',
+    buttonText: `Sign In to Console`
   }
 ];
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Feature({ title, Svg, description, href, buttonText }: FeatureItem) {
   return (
     <div className={styles.feature}>
       <div className="text--center">
@@ -44,6 +46,11 @@ function Feature({ title, Svg, description }: FeatureItem) {
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
+        <Link
+          className="button button--primary button--lg"
+          to={href}>
+          {buttonText}
+        </Link>
       </div>
     </div>
   );
