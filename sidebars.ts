@@ -18,81 +18,95 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       id: 'intro',
-      label: 'Intro',
+      label: 'Introduction',
     },
-    // {
-    //   type: 'doc',
-    //   id: 'getting-started',
-    //   label: 'Getting Started',
-    // },
-    // {
-    //   type: 'doc',
-    //   id: 'core-components',
-    //   label: 'Core Components',
-    // },
     {
-      'Endpoint': [
+      'Getting Started': [
         {
           type: 'doc',
-          id: 'endpoints/introduction',
-          label: 'Introduction',
+          id: 'getting-started/index',
+          label: 'Index',
         },
-        'endpoints/create-an-endpoint',
-        'endpoints/using-endpoint',
       ],
-      'VirtualGood': [
+      'Core Components': [
         {
           type: 'doc',
-          id: 'virtual-goods/introduction',
+          id: 'core-components/intro',
           label: 'Introduction',
-        }, {
-          type: 'doc',
-          id: 'virtual-goods/create-virtual-good',
-          label: 'Create VirtualGood',
-        }, {
-          type: 'doc',
-          id: 'virtual-goods/using-virtual-good',
-          label: 'Using VirtualGood',
-        },],
-      'CustomData': [
-        {
-          type: 'doc',
-          id: 'custom-data/introduction',
-          label: 'Introduction',
-        }, {
-          type: 'doc',
-          id: 'custom-data/create-custom-data',
-          label: 'Create CustomData',
-        }, {
-          type: 'doc',
-          id: 'custom-data/using-custom-data',
-          label: 'Using CustomData',
-        },],
-      'Player': [
-        {
-          type: 'doc',
-          id: 'players/introduction',
-          label: 'Introduction',
-        }, {
-          type: 'doc',
-          id: 'players/using-player',
-          label: 'Using Player',
-        }],
-      'Room': [
-        {
-          type: 'doc',
-          id: 'rooms/introduction',
-          label: 'Introduction',
-        }, {
-          type: 'doc',
-          id: 'rooms/schema/schema',
-          label: 'Schema',
         },
         {
+          'Endpoint': [
+            {
+              type: 'doc',
+              id: 'endpoints/introduction',
+              label: 'Introduction',
+            },
+            'endpoints/create-an-endpoint',
+            'endpoints/using-endpoint',
+          ],
+          'VirtualGood': [
+            {
+              type: 'doc',
+              id: 'virtual-goods/introduction',
+              label: 'Introduction',
+            }, {
+              type: 'doc',
+              id: 'virtual-goods/create-virtual-good',
+              label: 'Create VirtualGood',
+            }, {
+              type: 'doc',
+              id: 'virtual-goods/using-virtual-good',
+              label: 'Using VirtualGood',
+            },],
+          'CustomData': [
+            {
+              type: 'doc',
+              id: 'custom-data/introduction',
+              label: 'Introduction',
+            }, {
+              type: 'doc',
+              id: 'custom-data/create-custom-data',
+              label: 'Create CustomData',
+            }, {
+              type: 'doc',
+              id: 'custom-data/using-custom-data',
+              label: 'Using CustomData',
+            },],
+          'Player': [
+            {
+              type: 'doc',
+              id: 'players/introduction',
+              label: 'Introduction',
+            }, {
+              type: 'doc',
+              id: 'players/using-player',
+              label: 'Using Player',
+            }],
+          'Room': [
+            {
+              type: 'doc',
+              id: 'rooms/introduction',
+              label: 'Introduction',
+            }, {
+              type: 'doc',
+              id: 'rooms/schema/schema',
+              label: 'Schema',
+            },
+            {
+              type: 'doc',
+              id: 'rooms/definitions/definitions',
+              label: 'Definitions',
+            },
+          ],
+        }
+      ],
+      'Client SDK': [
+        {
           type: 'doc',
-          id: 'rooms/definitions/definitions',
-          label: 'Definitions',
-        },],
+          id: 'client-sdks/introduction',
+          label: 'Introduction',
+        },
+      ],
     },
   ],
   apiSidebar: [
