@@ -41,7 +41,7 @@ const config: Config = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          routeBasePath: '/', 
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
@@ -95,20 +95,21 @@ const config: Config = {
           ],
         },
         {
-          title: 'Community',
+          title: 'Product',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Main Website',
+              href: 'https://www.gamedrive.cc',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'Console',
+              href: 'https://console.gamedrive.cc',
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Comminity',
+              href: 'https://www.gamedrive.cc/community',
             },
+
           ],
         },
       ],
