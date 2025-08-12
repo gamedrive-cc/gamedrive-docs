@@ -6,7 +6,7 @@ import Link from '@docusaurus/Link';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  image: string;
   description: ReactNode;
   href: string;
   buttonText: string
@@ -15,7 +15,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Main Website',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    image: 'img/gamedrive-logo.png',
     description: (
       <>
         Check out landing page to new updates
@@ -26,7 +26,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: `Console`,
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    image: `img/gamedrive-logo.png`,
     description: (
       <>
         Start manage your backend
@@ -37,11 +37,11 @@ const FeatureList: FeatureItem[] = [
   }
 ];
 
-function Feature({ title, Svg, description, href, buttonText }: FeatureItem) {
+function Feature({ title, image, description, href, buttonText }: FeatureItem) {
   return (
     <div className={styles.feature}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img className={styles.featureImage} alt={title} src={image} />
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
