@@ -100,7 +100,7 @@ const sidebars: SidebarsConfig = {
           ],
         }
       ],
-      'Client SDK': [
+      'Client SDKs': [
         {
           type: 'doc',
           id: 'client-sdks/introduction',
