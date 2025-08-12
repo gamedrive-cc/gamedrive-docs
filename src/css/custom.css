@@ -18,7 +18,7 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -27,4 +27,47 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Change the global border radius for all components */
+:root {
+  --ifm-global-radius: 0.125rem;
+  --ifm-button-border-radius: 0.125rem; /* just in case buttons use their own var */
+  --ifm-alert-border-radius: 0.125rem;
+  --ifm-card-border-radius: 0.125rem;
+}
+
+/* Some extra fallback in case plugins or custom components ignore vars */
+.button,
+.card,
+.modal,
+.alert,
+.panel {
+  border-radius: 0.125rem !important;
+}
+
+.button {
+  border-radius: 0.125rem !important;
+}
+
+/* Include variants (primary, secondary, outline, etc.) */
+.button--primary,
+.button--secondary,
+.button--outline {
+  border-radius: 0.125rem !important;
+}
+
+
+.menu__link--active {
+  border-radius: 0.125rem !important; /* or 0.125rem */
+}
+
+/* Sidebar category highlight when expanded */
+.menu__list-item-collapsible--active {
+  border-radius: 0.125rem !important;
+}
+
+/* Optional: also round the little left border highlight */
+.menu__link--active::before {
+  border-radius: 0.125rem !important;
 }
