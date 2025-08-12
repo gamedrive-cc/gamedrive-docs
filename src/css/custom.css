@@ -1,10 +1,10 @@
 :root {
-  --ifm-color-primary: #00487c;          /* base */
-  --ifm-color-primary-dark: #003d6d;     /* darker shade */
-  --ifm-color-primary-darker: #00335a;   /* even darker */
-  --ifm-color-primary-darkest: #002848;  /* darkest */
-  --ifm-color-primary-light: #1a5599;    /* lighter */
-  --ifm-color-primary-lighter: #3a70b3;  /* lighter */
+  --ifm-color-primary: #00487c; /* base */
+  --ifm-color-primary-dark: #003d6d; /* darker shade */
+  --ifm-color-primary-darker: #00335a; /* even darker */
+  --ifm-color-primary-darkest: #002848; /* darkest */
+  --ifm-color-primary-light: #1a5599; /* lighter */
+  --ifm-color-primary-lighter: #3a70b3; /* lighter */
   --ifm-color-primary-lightest: #5a8cce; /* lightest */
 
   --ifm-code-font-size: 95%;
@@ -13,7 +13,7 @@
 
 /* Dark mode palette — lighter versions for readability */
 [data-theme="dark"] {
-  --ifm-color-primary: #4ca3e0;           /* lighter blue */
+  --ifm-color-primary: #4ca3e0; /* lighter blue */
   --ifm-color-primary-dark: #4393d3;
   --ifm-color-primary-darker: #3b82c7;
   --ifm-color-primary-darkest: #326eb5;
@@ -50,7 +50,6 @@
 .button--outline {
   border-radius: 0.125rem !important;
 }
-
 
 .menu__link--active {
   border-radius: 0.125rem !important; /* or 0.125rem */
