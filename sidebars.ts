@@ -24,8 +24,13 @@ const sidebars: SidebarsConfig = {
       'Getting Started': [
         {
           type: 'doc',
-          id: 'getting-started/index',
-          label: 'Index',
+          id: 'getting-started/0-intro',
+          label: 'Introduction',
+        },
+        {
+          type: 'doc',
+          id: 'getting-started/1-signup-to-create-new-project',
+          label: 'Signup to create new project',
         },
       ],
       'Core Components': [
