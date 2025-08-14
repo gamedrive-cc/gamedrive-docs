@@ -11,15 +11,15 @@ One project is supposed to use for one game. Different project have different en
 
 ### Sign up
 
-Go to [https://console.gamedrive.cc/sign-up](https://console.gamedrive.cc/sign-up) and submit required fields.
-After that login to the console.
+Go to [Signup](https://console.gamedrive.cc/sign-up) and submit required fields.
+After that [sign-In](https://console.gamedrive.cc/sign-up) to the console.
 
 ### Wait for Project Creator role
 
-You need to wait until GameDrive's admin gain you a role as a project creator before create a project. If you have issue on this step please contact admin on [facebok fanpage](https://www.facebook.com/gamedrive.cc)
+You need to wait until GameDrive's admin gain you a role as a project creator before be able to create a project. This step may take 0-2 days to be approve. If you have issue on this step please contact admin on [facebok fanpage](https://www.facebook.com/gamedrive.cc)
 
 ### Create New project
 
-Go to [New Project](https://console.gamedrive.cc/projects/new). Then inform all fields and submit. 
+Go to [New Project](https://console.gamedrive.cc/projects/new). Then inform all fields and submit.
 Now you will see your project appeared the list [Console Home](https://console.gamedrive.cc/home).
 Click on the new project to see project detail
