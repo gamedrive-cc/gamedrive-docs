@@ -11,8 +11,8 @@ One project is supposed to use for one game. Different project have different en
 
 ### Sign up
 
-Go to [Signup](https://console.gamedrive.cc/sign-up) and submit required fields.
-After that [sign-In](https://console.gamedrive.cc/sign-up) to the console.
+Go to [Sign-up](https://console.gamedrive.cc/sign-up) and submit required fields.
+After that [Sign-In](https://console.gamedrive.cc/sign-up) to the console.
 
 ### Wait for Project Creator role
 
