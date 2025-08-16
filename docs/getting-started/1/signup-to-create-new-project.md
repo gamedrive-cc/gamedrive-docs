@@ -22,10 +22,13 @@ You need to wait until GameDrive's admin gain you a role as a project creator be
 ### Create New project
 
 Go to [New Project](https://console.gamedrive.cc/projects/new). Then inform all fields and submit.
-![New project page](/path/to/image.png)
+
+![New project page](/img/docusaurus.png)
 
 Now you will see your project appeared the list [Console Home](https://console.gamedrive.cc/home).
-![Project list page](/path/to/image.png)
+
+![Project list page](/img/docusaurus.png)
 
 Click on the new project to see project detail
-![Project Info page](/path/to/image.png)
+
+![Project Info page](/img/docusaurus.png)
