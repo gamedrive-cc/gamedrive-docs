@@ -24,12 +24,12 @@ const sidebars: SidebarsConfig = {
       'Getting Started': [
         {
           type: 'doc',
-          id: 'getting-started/0-intro',
+          id: 'getting-started/0/intro',
           label: 'Introduction',
         },
         {
           type: 'doc',
-          id: 'getting-started/1-signup-to-create-new-project',
+          id: 'getting-started/1/signup-to-create-new-project',
           label: 'Signup to create new project',
         },
       ],
