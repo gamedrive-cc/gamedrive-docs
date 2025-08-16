@@ -17,7 +17,7 @@ After that [Sign-In](https://console.gamedrive.cc/sign-up) to the console.
 
 ### Wait for Project Creator role
 
-You need to wait until GameDrive's admin gain you a role as a project creator before be able to create a project. This step may take 0-2 days to be approve. If you have issue on this step please contact admin on [facebok fanpage](https://www.facebook.com/gamedrive.cc) or get more infomation by join our [Community](https://www.gamedrive.cc/community).
+You need to wait until GameDrive's admin grants you a role as a project creator before you will be able to create a project. This step may take 0-2 days to be approve. If you have issue on this step please contact admin on [facebok fanpage](https://www.facebook.com/gamedrive.cc) or get more infomation by join our [Community](https://www.gamedrive.cc/community).
 
 ### Create New project
 

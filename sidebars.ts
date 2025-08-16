@@ -32,6 +32,11 @@ const sidebars: SidebarsConfig = {
           id: 'getting-started/1/signup-to-create-new-project',
           label: 'Signup to create new project',
         },
+        {
+          type: 'doc',
+          id: 'getting-started/2/create-endpoint-and-write-logic',
+          label: 'Create first Endpoint and write game logic',
+        },
       ],
       'Core Components': [
         {
