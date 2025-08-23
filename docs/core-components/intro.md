@@ -3,7 +3,6 @@ sidebar_position: 1
 title: Core Component Introduction
 ---
 
-## What is Endpoint
+## What are Core Components?
 
-Endpoint allow you to create custom game logic to handle a request and send back a response.
-You can pass arguments with request. You can also send error response back to client.
+GameDrive has alot of service combinded together to make
