@@ -3,9 +3,11 @@ sidebar_position: 1
 title: Introduction
 ---
 
-# What is Game Drive?
+# What is GameDrive?
 
-Check out [main website](https://www.gamedrive.cc/)
+GameDrive is Backend as a service (baas) for online games. 
+
+Checkout [main website](https://www.gamedrive.cc/) for more detail.
 
 # What this document contain
 
