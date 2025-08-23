@@ -25,24 +25,49 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           id: 'getting-started/0/intro',
-          label: 'Introduction',
+          label: 'Getting Started Introduction',
         },
         {
           type: 'doc',
           id: 'getting-started/1/signup-to-create-new-project',
-          label: 'Signup to create new project',
+          label: 'Create new project',
         },
         {
           type: 'doc',
           id: 'getting-started/2/create-endpoint-and-write-logic',
-          label: 'Create first Endpoint and write game logic',
+          label: 'Create and use Endpoint',
+        },
+        {
+          type: 'doc',
+          id: 'getting-started/3/endpoint-print-log-and-show-logs-page',
+          label: 'Print logs',
+        },
+        {
+          type: 'doc',
+          id: 'getting-started/4/storing-data-via-custom-data',
+          label: 'Storing data via Custom Data',
+        },
+        {
+          type: 'doc',
+          id: 'getting-started/5/use-virtual-good-and-create-leaderboard',
+          label: 'Storing data via Virtual Good and create a leaderboard',
+        },
+        {
+          type: 'doc',
+          id: 'getting-started/6/stages-and-snapshots',
+          label: 'Stages and Snapshots',
+        },
+        {
+          type: 'doc',
+          id: 'getting-started/7/connect-to-gamedrive-from-unity-engine',
+          label: 'Connect to GameDrive from Unity Engine',
         },
       ],
       'Core Components': [
         {
           type: 'doc',
           id: 'core-components/intro',
-          label: 'Introduction',
+          label: 'Core Components Introduction',
         },
         {
           'Endpoint': [
@@ -109,13 +134,6 @@ const sidebars: SidebarsConfig = {
             },
           ],
         }
-      ],
-      'Client SDKs': [
-        {
-          type: 'doc',
-          id: 'client-sdks/introduction',
-          label: 'Introduction',
-        },
       ],
     },
   ],
