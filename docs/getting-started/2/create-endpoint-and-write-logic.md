@@ -6,7 +6,7 @@ slug: /getting-started/create-endpoint-and-write-logic
 
 ## What is Endpoints?
 
-Endpoint will handle response and response from your game client.
+Endpoint is like http endpoint but more strict. It will handle response and response from your game client.
 You can defind paramers and write custom logic for endpoints.
 
 ## Create and use Endpoint
