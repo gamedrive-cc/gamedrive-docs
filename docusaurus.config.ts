@@ -22,7 +22,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'kktech', // Usually your GitHub org/user name.
+  organizationName: 'gamedrive-cc', // Usually your GitHub org/user name.
   projectName: 'gamedrive', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -43,7 +43,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          // editUrl:'',
+          editUrl: 'https://github.com/gamedrive-cc/gamedrive-docs',
         },
         theme: {
           customCss: './src/css/custom.css',
