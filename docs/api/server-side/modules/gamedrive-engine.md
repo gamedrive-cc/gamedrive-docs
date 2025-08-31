@@ -1,95 +1,69 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
 title: gamedrive-engine
 ---
-# members
-  - [Node](#Node)
-    - [activeSelf](#Node_activeSelf)
-    - [activeInHierarchy](#Node_activeInHierarchy)
-    - [parent](#Node_activeInHierarchy)
-    - [setActive()](#Node_setActive)
-    - [setParent()](#Node_setParent)
-    - [addComponent(T)](#Node_addComponent)
-    - [getComponent(T)](#Node_getComponent)
-    - [getComponents(T)](#Node_getComponents)
-    - [getAllComponents()](#Node_getAllComponents)
-    - [on()](#Node_on)
-    - [off()](#Node_off)
-    - [emit()](#Node_emit)
-    - [emitUpward()](#Node_emitUpward)
-    - [emitDownward()](#Node_emitDownward)
-  - [Component](#Component)
-    - [enabled](#Component_enabled)
-    - [node](#Component_node)
-    - [awake()](#Component_awake)
-    - [onEnable()](#Component_onEnable)
-    - [onDisable()](#Component_onDisable)
-    - [start()](#Component_start)
-    - [update()](#Component_update)
-    - [onDestory()](#Component_onDestory)
-    - [delay()](#Component_delay)
-    - [stopDelay()](#Component_stopDelay)
-  - [destroy()](#destroy)
-  - [isDestroyed()](#isDestroyed)
 
-## Node
-### activeSelf{#Node_activeSelf}
-#### return
-  - boolean
-### activeInHierarchy{#Node_activeInHierarchy}
-#### return
-  - boolean
-### parent{#Node_activeInHierarchy}
-#### parameters
-  - parent : Node
-#### return
-  - Node
-### setActive(){#Node_setActive}
-#### parameters
-  - active : boolean
-  
-### setParent(){#Node_setParent}
-#### parameters
-  - parent : Node
-  
-### addComponent(){#Node_addComponent}
-#### parameters
-  - componentClass : T, T extends Component
-#### return
-  - T, T extends Component
-  
-### getComponent(){#Node_getComponent}
-#### parameters
-  - componentClass : T, T extends Component
-#### return
-  - T, T extends Component
-  
-### getComponents(){#Node_getComponents}
-#### parameters
-  - componentClass : T, T extends Component
-#### return
-  - T[], T extends Component
-### getAllComponents(){#Node_getAllComponents}
-#### return
-  - Component[]
-### on(){#Node_on}
-### off(){#Node_off}
-### emit(){#Node_emit}
-### emitUpward(){#Node_emitUpward}
-### emitDownward(){#Node_emitDownward}
+## module: gamedrive-engine
 
-## Component
-### enabled{#Component_enabled}
-### node{#Component_node}
-### awake(){#Component_awake}
-### onEnable(){#Component_onEnable}
-### onDisable(){#Component_onDisable}
-### start(){#Component_start}
-### update(){#Component_update}
-### onDestory(){#Component_onDestory}
-### delay(){#Component_delay}
-### stopDelay(){#Component_stopDelay}
-  
-## destroy(){#destroy}
-## isDestroyed(){#isDestroyed}
+```typescript title="gamedrive-engine"
+type Constructor<T> = new (...args: any[]) => T;
 
+declare class Instance {
+  getInstanceId(): number
+}
+
+export declare class Node extends Instance {
+  static findOneByTag(tag: string): Node
+  static findAllByTag(tag: string): Node[]
+
+  public readonly children: Node[]
+  get parent(): Node
+  set parent(node: Node)
+  public readonly activeSelf: boolean
+  public readonly activeInHierarchy: boolean
+
+  name: string
+  tag: string
+  setActive(active: boolean) : void
+  setParent(parent: Node): void
+  addComponent<T extends Component>(componentType: Constructor<T>): T
+  getComponent<T extends Component>(componentType: Constructor<T>): T
+
+  getAllComponents(): Component[]
+  getComponents<T extends Component>(componentType: Constructor<T>): T[]
+
+  //events
+  on(eventName: string, listener, bind = null): void
+  off(eventName: string, listener) : void
+  emit(eventName: string, ...args): boolean
+  emitUpwards(eventName: string, ...args): void
+  emitDownwards(eventName: string, ...args) : void
+}
+
+//inter Delay
+export declare class Component extends Instance {
+
+  enabled : boolean
+
+  public readonly node: Node
+
+  awake(): void
+
+  onEnable(): void
+
+  start(): void
+
+  update(delta: number) : void
+
+  onDisable() : void
+
+  onDestory() : void
+
+  /** delay will work only when the Component is enabled */
+  delay(callback, second: number): any
+  stopDelay(delayCallback: any)
+}
+
+export function destroy(object: Node | Component)
+export function isDestroyed (object: Node | Component): boolean
+```

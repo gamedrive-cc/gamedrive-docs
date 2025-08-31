@@ -3,355 +3,245 @@ sidebar_position: 0
 title: gamedrive
 ---
 
-# members
-  - [virtualGood](#virtualgood)
-    - [get()](#virtualgood_get)
-    - [set()](#virtualgood_set)
-    - [add()](#virtualgood_add)
-  - [customData](#customdata)
-    - [query functions](#customdata_functions)
-  - [player](#player)
-    - [findById()](#player_findById)
-    - [findByNumberId()](#player_findNumberId)
-    - [findAccountById()](#player_findAccountById)
-  - [Request](#request)
-    - [playerId](#Request_playerId)
-    - [args](#Request_args)
-  - [Response](#response)
-    - [send()](#Response_send)
-    - [sendError()](#Response_sendError)
-  - [iap](#iap)
-    - [google](#iap_google)
-      - [products](#iap_google_products)
-        - [get()](#iap_google_products_get)
-        - [acknowledge()](#iap_google_products_get)
-  - [room](#response)
-  - [dns](#response)
+## module: gamedrive
+```typescript title="gamedrive"
+export declare interface Request {
+  args: any,
+  playerId: string,
+  query: any,
+  body: any,
+  ip: string,
+}
 
-## virtualGood
-### get(){#virtualgood_get}
-#### parameters
-  - name : string - virtualGood's name
-  - playerId : string 
-  
-#### return
-  - Promise[any]
+export declare interface ActionRequest {
+  args: any,
+  userId: string,
+}
 
-```ts title="virtualGood.get()"
-import { virtualGood } from 'gamedrive';
+export declare interface Response {
+  send(data: any): void,
+  sendError(data: any): void,
+  sendError(code: string, message: string),
+  setStatusCode(statusCode: number),
+}
 
-const playerId = "5d6ede6a0ba62570afcedd3a"
-virtualGood.get("name", playerId).then(data => {
+//VirtualGood
+declare type PlayerValue = {
+  playerId: string
+  value: number
+}
 
-    const virtualGoodValue = {
-      name = data.name,
-      value = data.value,
-    } 
-    
-    console.log(virtualGoodValue)
-}).catch( error =>{
-    //handle error
-})
+declare type PlayerRank = {
+  playerId: string
+  rank: number
+  value: number
+}
 
-```
-### set(){#virtualgood_set}
-#### parameters
-  - name : string - virtualGood's name
-  - playerId : string 
-  - value : number - value to set
-#### return
-  - Promise[any]
+declare type VirtualGoodResult = {
+  name: string
+  value: number
+}
 
-```ts title="virtualGood.set()"
-import { virtualGood } from 'gamedrive';
+declare interface VirtualGood {
+  getValue(name: string, playerId: string): Promise<VirtualGoodResult>
+  setValue(name: string, playerId: string, value: number): Promise<VirtualGoodResult>;
+  addValue(name: string, playerId: string, value: number): Promise<VirtualGoodResult>;
+  getPlayerRank(name: string, playerId: string, sort: number = -1): Promise<PlayerRank>
+  findTopRankPlayers(name: string, limit: number, skip: number, sort: number = -1): Promise<PlayerValue[]>
+}
 
-const playerId = "5d6ede6a0ba62570afcedd3a"
-virtualGood.set("name", playerId, 999).then(data => {
+export const virtualGood: VirtualGood = {}
 
-    const virtualGoodValue = {
-      name = data.name,
-      value = data.value,
-    } 
-    
-    console.log(virtualGoodValue)
-}).catch( error =>{
-    //handle error
-})
+declare interface MongooseUpdateResult {
+  matchedCount: number
+  modifiedCount: number
+  acknowledged: boolean
+  upsertedId: number
+  upsertedCount: number
+}
 
-```
-### add(){#virtualgood_add}
-#### parameters
-  - name : string - virtualGood's name
-  - playerId : string
-  - value : number - value to add
-#### return
-  - Promise[any]
+declare interface MongooseDeleteResult {
+  deletedCount: number
+}
 
-```ts title="virtualGood.add()"
-import { virtualGood } from 'gamedrive';
+declare interface CustomData {
+  create(name: string, docs: any, options?: any): Promise<any>
+  findOne(name: string, conditions: any, projection?: any, options?: any): Promise<any>
+  insertMany(name: string, docs: any[], options?: any): Promise<any[]>
+  updateOne(name: string, filter: any, update?: any, options?: any): Promise<MongooseUpdateResult>
+  updateMany(name: string, filter: any, update: any, options?: any): Promise<MongooseUpdateResult>
+  find(name: string, filter: any, projection?: any, options?: any): Promise<any[]>
+  findOneAndUpdate(name: string, conditions: any, update: any, options?: any): Promise<any>
+  findOneAndDelete(name: string, conditions: any, options?: any): Promise<any>
+  findById(name: string, _id: any, projection?: any, options?: any): Promise<any>
+  findByIdAndUpdate(name: string, _id: any, update: any, options?: any): Promise<any>
+  findByIdAndDelete(name: string, _id: any, options?: any): Promise<any>
+  countDocuments(name: string, filter?: any): Promise<number>
+  estimatedDocumentCount(name: string, options?: any): Promise<number>
+  deleteMany(name: string, conditions?: any, options?: any): Promise<MongooseDeleteResult>
+}
 
-const playerId = "5d6ede6a0ba62570afcedd3a"
-virtualGood.add("name", playerId, 1).then(data => {
 
-    const virtualGoodValue = {
-      name = data.name,
-      value = data.value,
-    } 
-    
-    console.log(virtualGoodValue)
-}).catch( error =>{
-    //handle error
-})
+export declare const customData: CustomData = {
+}
 
-```
+export type SignedPlayer = {
+  playerId: string
+  updatedAt: Date
+}
 
-## customData
-Pass customData's name to first parameter of query functions and pass other paremeters by follow mongoose's Model apis (https://mongoosejs.com/docs/api/model.html).
+declare interface Authorization {
+  find(conditions: any, projection?: any, options?: any): Promise<SignedPlayer[]>
+}
 
-```ts title="Usage"
-import { customData } from 'gamedrive';
+export declare const authorization: Authorization = {
+}
 
-/* playerStatus's schema
-{
-  "playerId": {
-    "type": "objectId",
-    "unique": true
-  },
-  "health": {
-    "type": "number",
-    "default": 50
-  },
-  "mana": {
-    "type": "number",
-    "default": 50
+declare interface Player {
+  _id: string,
+  numberId: number,
+  name: string,
+  profilePictureUrl: string,
+}
+
+export declare enum Stage {
+  PREVIEW = "PREVIEW",
+  LIVE = "LIVE"
+}
+
+declare interface Device {
+  name: string,
+  guid: string,
+  platform: string,
+}
+
+declare interface SocialAccounts {
+  facebookUserId: string,
+  googleUserId: string,
+}
+
+declare interface PlayerAccount {
+  socialAccounts: SocialAccounts,
+  devices: Device[]
+}
+
+export declare const stage: Stage
+
+export declare interface PlayerTools {
+  findById(playerId: string): Promise<Player>
+  findByNumberId(numberId: number): Promise<Player>
+  deleteById(playerId: string): Promise<Player>
+  findAccountById(playerId: string): Promise<PlayerAccount>
+  find(condition: any = {}, projection: any = {}, options: any = {}): Promise<Player[]>
+  countDocuments(filter: any = {}): Promise<number>
+}
+
+export declare const player: PlayerTools = {}
+
+//webRequest
+export declare interface WebRequestConfig {
+  url?: string;
+  method?: string;
+  baseURL?: string;
+  headers?: Record<string, string>;
+  params?: any;
+  data?: any;
+  timeout?: number;
+  withCredentials?: boolean;
+  responseType?: string;
+  responseEncoding?: string;
+  xsrfCookieName?: string;
+  xsrfHeaderName?: string;
+  maxContentLength?: number;
+  maxBodyLength?: number;
+  maxRedirects?: number;
+}
+
+export declare interface WebRequestResonse {
+  data: any;
+  status: number;
+  headers: any;
+  statusText: any;
+}
+
+export declare interface WebRequestResonseError {
+  code: string
+  message: any
+  response: WebRequestResonse
+}
+
+export declare interface WebRequest {
+  get(url: string, config?: WebRequestConfig): Promise<WebRequestResonse>
+  delete(url: string, config?: WebRequestConfig): Promise<WebRequestResonse>
+  head(url: string, config?: WebRequestConfig): Promise<WebRequestResonse>;
+  options(url: string, config?: WebRequestConfig): Promise<WebRequestResonse>;
+  post(url: string, data?: any, config?: WebRequestConfig): Promise<WebRequestResonse>;
+  put(url: string, data?: any, config?: WebRequestConfig): Promise<WebRequestResonse>;
+  patch(url: string, data?: any, config?: WebRequestConfig): Promise<WebRequestResonse>;
+}
+
+export declare const webRequest: WebRequest = {}
+
+export declare interface RoomSession {
+  roomId: string
+  sessionId: string
+  roomServiceAddress: string
+}
+
+export declare interface RoomInfo {
+  roomId: string
+  processId: string
+  maxClients: number
+  clients: number
+  locked: boolean
+  private: boolean
+  name: string
+  metadata: any
+}
+
+export declare const room = {
+  getPlayerRoomSession: function (playerId: string, roomName: string): Promise<RoomSession> { return },
+  getRoomInfo: function (roomId: string, roomServiceAddress: string): Promise<RoomInfo> { return }
+}
+
+//iap
+export declare namespace IAP {
+  export declare namespace Google {
+    export declare interface Auth {
+      serviceAccountEmail: string
+      privateKey: string
+    }
+
+    export declare interface Receipt {
+      packageName: string
+      productId: string
+      purchaseToken: string
+    }
+
+    export declare interface ProductTransactionData {
+      purchaseTimeMillis: string
+      purchaseState: number
+      consumptionState: number
+      developerPayload: string
+      orderId: string
+      acknowledgementState: number
+      kind: string
+      regionCode: string
+
+    }
   }
 }
-*/
 
-customData.create("playerStatus", {
-        playerId: "5d6ede6a0ba62570afcedd3a",
-        health: 100,
-        mana: 100
-}).then(data =>   {
-  //handle data
-}).catch(error => {
-  //handle error
-})
-```
-
-### query functions{#customdata_functions}
-```ts title="create"
-create(name: string, docs: any, options: any): Promise<any>
-```
-```ts title="findOne"
-findOne(name: string, conditions: any, projection: any, options: any): Promise<any> 
-```
-```ts title="insertMany"
-insertMany(name: string, docs: any[], options: any): Promise<any[]> 
-```
-```ts title="updateOne"
-updateOne(name: string, filter: any, update: any, options: any): Promise<MongooseUpdateResult>
-```
-```ts title="updateMany"
-updateMany(name: string, filter: any, update: any, options: any): Promise<MongooseUpdateResult>
-```
-```ts title="find"
-//max 200 row
-find(name: string, filter: any, projection: any, options: any): Promise<any[]> 
-```
-```ts title="findOneAndUpdate"
-findOneAndUpdate(name: string, conditions: any, update: any, options: any): Promise<any>
-```
-```ts title="findOneAndDelete"
-findOneAndDelete(name: string, conditions: any, options: any): Promise<any>
-```
-```ts title="findById"
-findById(name: string, _id: any, projection: any, options: any): Promise<any>
-```
-```ts title="findByIdAndUpdate"
-findByIdAndUpdate(name: string, _id: any, update: any, options: any): Promise<any>
-```
-```ts title="findByIdAndDelete"
-findByIdAndDelete(name: string, _id: any, options: any): Promise<any>
-```
-```ts title="countDocuments"
-countDocuments(name: string, filter: any): Promise<number>
-```
-```ts title="estimatedDocumentCount"
-estimatedDocumentCount(name: string, options: any): Promise<number> 
-```
-```ts title="deleteMany"
-deleteMany(name: string, conditions: any, options: any): Promise<any>
-```
-## player
-### findById(){#player_findById}
-#### parameters
-  - playerId : string 
-  
-#### return
-  - Promise[any]
-
-```ts title="player.findById()"
-import { player } from 'gamedrive';
-
-const playerId = "5d6ede6a0ba62570afcedd3a"
-player.findById(playerId).then(data => {
-  //handle data
-
-  /*
-  {
-    _id,
-    name,
-    numberId,
-    profilePictureUrl
+export declare const iap = {
+  google: {
+    products: {
+      get: async function (auth: IAP.Google.Auth, receipt: IAP.Google.Receipt): Promise<ProductTransactionData> { return },
+      acknowledge: async function (auth: IAP.Google.Auth, receipt: IAP.Google.Receipt): Promise<void> { return },
+    }
   }
-  */
-}).catch( error =>{
-    //handle error
-})
-
-```
-
-### findByNumberId(){#player_findNumberId}
-#### parameters
-  - numberId : number 
-#### return
-  - Promise[any]
-
-```ts title="player.findByNumberId()"
-import { player } from 'gamedrive';
-
-const playerNumberId = 0000000001
-player.findByNumberId(playerNumberId).then(data => {
-  //handle data
-
-  /*
-  {
-    _id,
-    name,
-    numberId,
-    profilePictureUrl
-  }
-  */
-}).catch( error =>{
-    //handle error
-})
-
-```
-### findAccountById(){#player_findAccountById}
-#### parameters
-  - playerId : string 
-#### return
-  - Promise[any]
-
-```ts title="player.findAccountById()"
-import { player } from 'gamedrive';
-
-const playerId = "5d6ede6a0ba62570afcedd3a"
-player.findAccountById(playerId).then(data => {
-  //handle data
-
-  /*
-  {
-    devices,
-    socialAccounts
-  }
-  */
-}).catch( error =>{
-    //handle error
-})
-
-```
-
-## Request
-Class of first argument of endpoint which storing data of the request send from client
-### playerId{#Request_playerId}
-Id of player who send the request
-
-```js title="endpoint: Example"
-import { Request, Response } from 'gamedrive';
-
-export default function (request: Request, response: Response) {
-  const playerId = request.playerId//some value like "5d6ede6a0ba62570afcedd3a"
-  console.log("playerId:", playerId)
 }
-```
-### args{#Request_args}
-Array of argument passed to the endpoint
 
-```js title="endpoint: Example"
-import { Request, Response } from 'gamedrive';
-
-export default function (request: Request, response: Response) {
-  const args : any[] = request.args//some value like "5d6ede6a0ba62570afcedd3a"
-  //request.args.length will equal 0 if no argument passed
-  console.log("args:", args)
-}
-```
-
-## Response
-Class of second argument of endpoint which storing functions to send response to client
-### send(){#Response_send}
-Send response back to client
-
-```js title="endpoint: Example"
-import { Request, Response } from 'gamedrive';
-
-export default function (request: Request, response: Response) {
-  const args : any[] = request.args//some value like "5d6ede6a0ba62570afcedd3a"
-  //request.args.length will equal 0 if no argument passed
-  response.send({message: "Hello world"})
-}
-```
-
-### sendError(){#Response_sendError}
-Send error response back to client
-
-```js title="endpoint: Example"
-import { Request, Response } from 'gamedrive';
-
-export default function (request: Request, response: Response) {
-  //you can call sendError in 2 forms
-  response.sendError("message")
-  response.sendError("CODE", "message")//send CODE and message
-}
-```
-
-## webRequest
-Class of second argument of endpoint which storing functions to send response to client
-https://github.com/axios/axios
-"axios": "^0.27.2"
-
-webReqest.get(url[, config])
-webReqest.delete(url[, config])
-webReqest.head(url[, config])
-webReqest.options(url[, config])
-webReqest.post(url[, data[, config]])
-webReqest.put(url[, data[, config]])
-webReqest.patch(url[, data[, config]]) 
-
-### get(){#Response_send}
-Send response back to client
-
-```js title="endpoint: Example"
-import { Request, Response } from 'gamedrive';
-
-export default function (request: Request, response: Response) {
-  const args : any[] = request.args//some value like "5d6ede6a0ba62570afcedd3a"
-  //request.args.length will equal 0 if no argument passed
-  response.send({message: "Hello world"})
-}
-```
-
-### sendError(){#Response_sendError}
-Send error response back to client
-
-```js title="endpoint: Example"
-import { Request, Response } from 'gamedrive';
-
-export default function (request: Request, response: Response) {
-  //you can call sendError in 2 forms
-  response.sendError("message")
-  response.sendError("CODE", "message")//send CODE and message
+export declare const dns = {
+  reverse: async function (ip: string): Promise<string[]> { return },
 }
 ```

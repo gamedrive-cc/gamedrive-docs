@@ -126,16 +126,7 @@ const sidebars: SidebarsConfig = {
               type: 'doc',
               id: 'core-components/rooms/introduction',
               label: 'Introduction',
-            }, {
-              type: 'doc',
-              id: 'core-components/rooms/schema/schema',
-              label: 'Schema',
-            },
-            {
-              type: 'doc',
-              id: 'core-components/rooms/definitions/definitions',
-              label: 'Definitions',
-            },
+            }
           ],
           'Action': [
             {
@@ -162,16 +153,30 @@ const sidebars: SidebarsConfig = {
           id: 'in-depth/intro',
           label: 'In-depth Introduction',
         },
+        {
+          type: 'doc',
+          id: 'in-depth/module.json/index',
+          label: 'Module.json',
+        },
+        {
+          type: 'doc',
+          id: 'in-depth/vm',
+          label: 'VM',
+        },
+        {
+          type: 'doc',
+          id: 'in-depth/export-import',
+          label: 'Export and Import',
+        },
+
       ],
     },
   ],
   apiSidebar: [
     'api/intro',
     {
-      'Server side': [{
-        type: 'category',
-        label: 'Modules',
-        items: [{
+      'Server side modules': [
+        {
           type: 'doc',
           id: 'api/server-side/modules/gamedrive',
           label: 'gamedrive',
@@ -185,13 +190,8 @@ const sidebars: SidebarsConfig = {
           id: 'api/server-side/modules/gamedrive-room',
           label: 'gamedrive-room',
         },
-        ],
-      },],
-
+      ],
     },
-    // 'api/authentication',
-    // 'api/authorization',
-    // 'api/endpoint',
   ],
 };
 

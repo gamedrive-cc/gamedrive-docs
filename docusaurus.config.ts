@@ -76,7 +76,7 @@ const config: Config = {
           label: 'API',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/gamedrive-cc',
           label: 'GitHub',
           position: 'right',
         },
