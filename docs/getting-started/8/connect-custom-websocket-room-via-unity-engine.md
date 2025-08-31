@@ -197,7 +197,7 @@ Check [previous topic](/getting-started/connect-to-gamedrive-from-unity-engine#h
 
 Open scene at `Assets/Scenes/GameDriveSampleRoomScene`. This scene allow us to use 3 clients to create room, join the room, sync the same state object msend and receive message to each other.
 
-At first, check the file `Assets/Domains/Room/Clients/MainState.cs`. This file contain generated classes from [generate C# state classes](/connect-custom-websocket-room-via-unity-engine#generate-c-state-classes-to-use-in-unitys-sdk).
+At first, check the file `Assets/Domains/Room/Clients/MainState.cs`. This file contain generated classes from [generate C# state classes](/getting-started/connect-custom-websocket-room-via-unity-engine#generate-c-state-classes-to-use-in-unitys-sdk).
 
 ### Login and Join room.
 
