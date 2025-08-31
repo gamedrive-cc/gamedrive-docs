@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: Connect Custom WebSocket Room via Unity Engine
-slug: /connect-custom-websocket-room-via-unity-engine
+slug: /getting-started/connect-custom-websocket-room-via-unity-engine
 ---
 
 ## What is GameDrive's Room?
