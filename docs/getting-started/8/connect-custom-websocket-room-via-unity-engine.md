@@ -6,7 +6,7 @@ slug: /getting-started/connect-custom-websocket-room-via-unity-engine
 
 ## What is GameDrive's Room?
 
-GameDrive's room built on top of [Colyseus 0.14.23](https://www.npmjs.com/package/colyseus/v/0.14.23). It's coming with Nodes and Components based game engine which allow you to use fimilar game client coding style to fully control the room states and events on backend.
+GameDrive's room built on top of [Colyseus 0.14.23](https://www.npmjs.com/package/colyseus/v/0.14.23). It's coming with Nodes and Components based game engine which allow you to use fimilar game client coding style to fully control the room states and events on backend. Also, you can call Custom Data, Virtual Goods and other gamedrive module apis inside the room cycle.
 
 ## How to create a Room?
 
@@ -158,7 +158,8 @@ Now we have C# schema classes to use on Unity engine sdk on next steps.
 Handling events and state of rooms is complicated and hard show the components file by file here. So let's use GameDrive's import feature to import the pre-made project that contain the handling logic.
 
 ### Download sample exported project.json file
-   <a href="\files\getting-started\8\project-68a045fbde13c2fd71aa8f5f-export-file.json" download>📥 Download </a>
+
+<a href="\files\getting-started\8\project-68a045fbde13c2fd71aa8f5f-export-file.json" download>📥 Download </a>
 
 ### Import the file to the existing project.
 
