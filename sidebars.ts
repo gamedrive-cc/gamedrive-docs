@@ -156,7 +156,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           id: 'in-depth/module.json/index',
-          label: 'Module.json',
+          label: 'module.json',
         },
         {
           type: 'doc',

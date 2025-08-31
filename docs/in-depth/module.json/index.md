@@ -7,8 +7,6 @@ title: "module.json"
 
 You can create module.json to enable additional modules or disable not use modules. Allowing more modules will increate load time when start up the vm.
 
-place module.json in the root directory of inside a room folder to override the root module.json so you can control which modules can use in side the realtime room
-
 Here is default module.json
 
 ```json
@@ -29,9 +27,8 @@ Here is default module.json
 
 ## How to use module.json?
 
-Create in root directory
-
-Create inside each room
+- Create module.js in root directory to control entire project
+- Create module.json inside each room folder to override the root module.json
 
 ## Good to know
-module.json will not works when call action
+module.json will not works when call action. So all modules will be loaded
