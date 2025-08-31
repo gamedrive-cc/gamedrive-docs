@@ -59,8 +59,13 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'doc',
-          id: 'getting-started/7/connect-to-gamedrive-from-unity-engine',
-          label: 'Connect to GameDrive from Unity Engine',
+          id: 'getting-started/7/connect-to-gamedrive-via-unity-engine',
+          label: 'Connect to GameDrive via Unity Engine',
+        },
+        {
+          type: 'doc',
+          id: 'getting-started/8/connect-custom-websocket-room-via-unity-engine',
+          label: 'Connect to Custom WebSocket Room via Unity Engine',
         },
       ],
       'Core Components': [
@@ -70,70 +75,93 @@ const sidebars: SidebarsConfig = {
           label: 'Core Components Introduction',
         },
         {
+          'Authentication': [
+            {
+              type: 'doc',
+              id: 'core-components/authentication/introduction',
+              label: 'Authentication Introduction',
+            },
+            {
+              type: 'doc',
+              id: 'core-components/authentication/authentication-details',
+              label: 'Authentication Details',
+            },
+          ],
           'Endpoint': [
             {
               type: 'doc',
-              id: 'endpoints/introduction',
-              label: 'Introduction',
+              id: 'core-components/endpoints/introduction',
+              label: 'Endpoints Introduction',
             },
-            'endpoints/create-an-endpoint',
-            'endpoints/using-endpoint',
+            {
+              type: 'doc',
+              id: 'core-components/endpoints/endpoint-in-details',
+              label: 'Endpoints in details',
+            },
           ],
-          'VirtualGood': [
+          'Custom Data': [
             {
               type: 'doc',
-              id: 'virtual-goods/introduction',
-              label: 'Introduction',
+              id: 'core-components/custom-data/introduction',
+              label: 'Custom Data Introduction',
             }, {
               type: 'doc',
-              id: 'virtual-goods/create-virtual-good',
-              label: 'Create VirtualGood',
-            }, {
-              type: 'doc',
-              id: 'virtual-goods/using-virtual-good',
-              label: 'Using VirtualGood',
-            },],
-          'CustomData': [
+              id: 'core-components/custom-data/custom-data-in-details',
+              label: 'Custom Data in details',
+            },
+          ],
+          'Virtual Goods': [
             {
               type: 'doc',
-              id: 'custom-data/introduction',
-              label: 'Introduction',
+              id: 'core-components/virtual-goods/introduction',
+              label: 'Virtual Goods Introduction',
             }, {
               type: 'doc',
-              id: 'custom-data/create-custom-data',
-              label: 'Create CustomData',
-            }, {
-              type: 'doc',
-              id: 'custom-data/using-custom-data',
-              label: 'Using CustomData',
-            },],
-          'Player': [
-            {
-              type: 'doc',
-              id: 'players/introduction',
-              label: 'Introduction',
-            }, {
-              type: 'doc',
-              id: 'players/using-player',
-              label: 'Using Player',
-            }],
+              id: 'core-components/virtual-goods/virtual-goods-in-details',
+              label: 'Virtual Goods in details',
+            }
+          ],
           'Room': [
             {
               type: 'doc',
-              id: 'rooms/introduction',
+              id: 'core-components/rooms/introduction',
               label: 'Introduction',
             }, {
               type: 'doc',
-              id: 'rooms/schema/schema',
+              id: 'core-components/rooms/schema/schema',
               label: 'Schema',
             },
             {
               type: 'doc',
-              id: 'rooms/definitions/definitions',
+              id: 'core-components/rooms/definitions/definitions',
               label: 'Definitions',
             },
           ],
+          'Action': [
+            {
+              type: 'doc',
+              id: 'core-components/action/introduction',
+              label: 'Actions Introduction',
+            },
+          ],
+          'Players': [
+            {
+              type: 'doc',
+              id: 'core-components/players/introduction',
+              label: 'Player Introduction',
+            }, {
+              type: 'doc',
+              id: 'core-components/players/using-player',
+              label: 'Using Player',
+            }],
         }
+      ],
+      'In-depth': [
+        {
+          type: 'doc',
+          id: 'in-depth/intro',
+          label: 'In-depth Introduction',
+        },
       ],
     },
   ],
