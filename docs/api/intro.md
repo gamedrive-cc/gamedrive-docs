@@ -4,4 +4,4 @@ title: API Introduction
 ---
 
 # Game Drive's apis
-Game Drive has 2 part of apis, server side and client side.
+This sections will show you all available apis

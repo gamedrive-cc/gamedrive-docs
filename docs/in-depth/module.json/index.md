@@ -5,8 +5,7 @@ title: "module.json"
 
 ## What is module.json?
 
-You can create module.json to enable additional modules or disable not use modules.
-Allowing more modules will increate load time when start up the vm.
+You can create module.json to enable additional modules or disable not use modules. Allowing more modules will increate load time when start up the vm.
 
 place module.json in the root directory of inside a room folder to override the root module.json so you can control which modules can use in side the realtime room
 

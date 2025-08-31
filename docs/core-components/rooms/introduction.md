@@ -1,9 +1,11 @@
 ---
 sidebar_position: 1
-title: "Room Introduction"
+title: Rooms Introduction
 ---
 
-## What room can do?
+## What is Rooms?
 
-onClient side set password as field of the room.
-first onAuth will use as password.
+Go to [Getting started](/getting-started/connect-custom-websocket-room-via-unity-engine) with rooms first.
+
+Then Find more what we can do with [gamedrive-room's api](/api/server-side/modules/gamedrive-room) and [gamedrive-engine's api](/api/server-side/modules/gamedrive-engine) modules.
+
