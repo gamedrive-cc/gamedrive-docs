@@ -43,7 +43,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/gamedrive-cc/gamedrive-docs',
+          editUrl: 'https://github.com/gamedrive-cc/gamedrive-docs/blob/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
