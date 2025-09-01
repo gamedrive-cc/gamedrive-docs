@@ -30,7 +30,7 @@ Room's state is an object that will be sync to all clients connecting to the roo
 
 ![Room Detail](\img\docs\getting-started\8\04-room-created-page.png)
 
-It will bring you to Code Editor of the room.
+This will take you to the room's code editor.
 
 ![Room Code Editor](\img\docs\getting-started\8\05-room-code-editor.png)
 

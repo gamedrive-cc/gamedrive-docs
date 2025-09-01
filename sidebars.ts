@@ -72,7 +72,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           id: 'core-components/intro',
-          label: 'Core Components Introduction',
+          label: '"Introduction to Core Components',
         },
         {
           'Authentication': [
