@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Getting Started Introduction
+slug: /getting-started/intro
 ---
 
 ## What's in this Getting Started?

@@ -57,7 +57,7 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     navbar: {
-      title: 'GameDrive',
+      title: 'GameDrive Docs',
       logo: {
         alt: 'GameDrive Logo',
         src: 'img/gamedrive-logo.png',
