@@ -11,144 +11,134 @@ GameDrive's room built on top of [Colyseus 0.14.23](https://www.npmjs.com/packag
 ## How to create a Room?
 
 1. Go to Rooms menu on sidebar and click on New Room button on top righ
-
-![Room list](\img\docs\getting-started\8\01-go-to-room-list.png)
+   ![Room list](\img\docs\getting-started\8\01-go-to-room-list.png)
 
 2. Input room name and click Create button
-
-![New Room](\img\docs\getting-started\8\02-new-room.png)
+   ![New Room](\img\docs\getting-started\8\02-new-room.png)
 
 3. Input room name and click Create button
-
-![New Room Exist](\img\docs\getting-started\8\03-new-room-created-list.png)
+   ![New Room Exist](\img\docs\getting-started\8\03-new-room-created-list.png)
 
 ## How to define the room's state?
 
 Room's state is an object that will be sync to all clients connecting to the room. GameDrive's room state use .json file to define schema of room state. Tt base on [Colyseus's room](https://0-14-x.docs.colyseus.io/colyseus/server/room/#setstate-object) state definitions.
 
 1. Go to the Room Detail page of the created room and click on Open in Code Editor link.
+   ![Room Detail](\img\docs\getting-started\8\04-room-created-page.png)
 
-![Room Detail](\img\docs\getting-started\8\04-room-created-page.png)
-
-This will take you to the room's code editor.
-
-![Room Code Editor](\img\docs\getting-started\8\05-room-code-editor.png)
+   This will take you to the room's code editor.
+   ![Room Code Editor](\img\docs\getting-started\8\05-room-code-editor.png)
 
 2. Open up `rooms/cool-game-room/schemas/DefaultMainState.json` file and you will see the MainState schema definition contain default schema like this.
+   ![DefaultMainState on Code Editor](\img\docs\getting-started\8\06-room-schema-json-main-state.png)
+   ```json
+   {
+     "name": "MainState",
+     "fields": [
+       {
+         "name": "defaultField",
+         "type": "string"
+       }
+     ]
+   }
+   ```
 
-![DefaultMainState on Code Editor](\img\docs\getting-started\8\06-room-schema-json-main-state.png)
+   Edit the `rooms/cool-game-room/schemas/DefaultMainState.json` content to this
 
-```json
-{
-  "name": "MainState",
-  "fields": [
-    {
-      "name": "defaultField",
-      "type": "string"
-    }
-  ]
-}
-```
+   ```json
+   {
+     "name": "MainState",
+     "fields": [
+       {
+         "name": "timer",
+         "type": "float32"
+       },
+       {
+         "name": "players",
+         "type": "Player",
+         "collection": "ArraySchema"
+       },
+       {
+         "name": "itemMap",
+         "type": "Item",
+         "collection": "MapSchema"
+       }
+     ]
+   }
+   ```
 
-Edit the `rooms/cool-game-room/schemas/DefaultMainState.json` content to this
+   And create 2 more schema files
 
-```json
-{
-  "name": "MainState",
-  "fields": [
-    {
-      "name": "timer",
-      "type": "float32"
-    },
-    {
-      "name": "players",
-      "type": "Player",
-      "collection": "ArraySchema"
-    },
-    {
-      "name": "itemMap",
-      "type": "Item",
-      "collection": "MapSchema"
-    }
-  ]
-}
-```
+   Create `rooms/cool-game-room/schemas/Player.json` content to this
 
-And create 2 more schema files
+   ```json
+   {
+     "name": "Player",
+     "fields": [
+       {
+         "name": "id",
+         "type": "string"
+       },
+       {
+         "name": "name",
+         "type": "string"
+       },
+       {
+         "name": "positionX",
+         "type": "int8"
+       },
+       {
+         "name": "positionY",
+         "type": "int8"
+       },
+       {
+         "name": "connected",
+         "type": "boolean",
+         "default": true
+       }
+     ]
+   }
+   ```
 
-Create `rooms/cool-game-room/schemas/Player.json` content to this
+   Create `rooms/cool-game-room/schemas/Item.json` content to this
 
-```json
-{
-  "name": "Player",
-  "fields": [
-    {
-      "name": "id",
-      "type": "string"
-    },
-    {
-      "name": "name",
-      "type": "string"
-    },
-    {
-      "name": "positionX",
-      "type": "int8"
-    },
-    {
-      "name": "positionY",
-      "type": "int8"
-    },
-    {
-      "name": "connected",
-      "type": "boolean",
-      "default": true
-    }
-  ]
-}
-```
+   ```json
+   {
+     "name": "Item",
+     "fields": [
+       {
+         "name": "name",
+         "type": "string"
+       },
+       {
+         "name": "level",
+         "type": "uint8"
+       }
+     ]
+   }
+   ```
 
-Create `rooms/cool-game-room/schemas/Item.json` content to this
+   The result should look like this
 
-```json
-{
-  "name": "Item",
-  "fields": [
-    {
-      "name": "name",
-      "type": "string"
-    },
-    {
-      "name": "level",
-      "type": "uint8"
-    }
-  ]
-}
-```
+   ![States on Code Editor](\img\docs\getting-started\8\06-2-room-schema-json-main-state.png)
 
-The result should look like this
+   As you can see, the MainState contains 3 fields.
 
-![States on Code Editor](\img\docs\getting-started\8\06-2-room-schema-json-main-state.png)
+   - timer, as a float
+   - players as an array
+   - items as a map
 
-As you can see, the MainState contains 3 fields.
-
-- timer, as a float
-- players as an array
-- items as a map
-
-Now schema of the room is ready to use.
+   Now schema of the room is ready to use.
 
 ## Generate C# state's schema classes to use in Unity's sdk
 
 On previous step, we defined 3 schema files. We will convert those schema into C# schema classes.
 
 Go to cool-game-room detail page.
-
 ![ROom detail generate schema](\img\docs\getting-started\8\09-generate-room-schema-class.png)
 
 Then click on 'Generate' Button.
-
 After finish load it will show 'Open In Code Editor' link. Click on it and it will bring you to the C# scripts result
-
 ![Generate Schema result](\img\docs\getting-started\8\09-generate-room-schema-class-result.png)
 
 Now we have C# schema classes to use on Unity engine sdk on next steps.
@@ -164,7 +154,6 @@ Handling events and state of rooms is complicated and hard show the components f
 ### Import the file to the existing project.
 
 Go to Tools tab in sidebar menu
-
 ![To go tools import](\img\docs\getting-started\8\07-go-to-tools-import.png)
 
 Click on Choose file button, select the file then click Import button.
@@ -324,7 +313,6 @@ Client2 will receive all messages from Cleint1
 This code show how to handle message from backend side.
 
 How to receive and send Broadcast messages
-
 ```typescript title="rooms/cool-game-room/chat/BroadcastManager.ts"
 export class BroadcastManager extends Component {
   onEnable() {

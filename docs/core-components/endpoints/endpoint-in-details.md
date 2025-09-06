@@ -23,9 +23,7 @@ To allow external send request to endpoint without required to login first, you 
 
 If you project id is 1111111222222aaaaaabbbbbb you can call exposed-verify-ads endpoint by following url
 
-`
-https://southeast-asia.gamedrive.cc/player-gateway/endpoints/exposed/1111111222222aaaaaabbbbbb/LIVE/exposed-verify-ads?query1=xxxyyy
-`
+`https://southeast-asia.gamedrive.cc/player-gateway/endpoints/exposed/1111111222222aaaaaabbbbbb/LIVE/exposed-verify-ads?query1=xxxyyy`
 
 ### Get query and body from request
 
@@ -78,3 +76,4 @@ Notice
 
 - server-side verification ads (SSV)
 - news update
+- check minimun game client version required by game backend server.
