@@ -72,7 +72,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           id: 'core-components/intro',
-          label: '"Introduction to Core Components',
+          label: 'Introduction to Core Components',
         },
         {
           'Authentication': [
@@ -104,10 +104,16 @@ const sidebars: SidebarsConfig = {
               type: 'doc',
               id: 'core-components/custom-data/introduction',
               label: 'Custom Data Introduction',
-            }, {
+            },
+            {
               type: 'doc',
               id: 'core-components/custom-data/custom-data-in-details',
               label: 'Custom Data in details',
+            },
+            {
+              type: 'doc',
+              id: 'core-components/custom-data/manager-data-of-custom-data',
+              label: 'Manage data of Custom Data',
             },
           ],
           'Virtual Goods': [

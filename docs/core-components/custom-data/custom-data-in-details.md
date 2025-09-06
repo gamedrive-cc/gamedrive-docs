@@ -104,7 +104,6 @@ It's posible to use other Custom Data as field's type and allow to assign as arr
 ```
 
 To use custom data type, in Custom Data detail page we need to add Custom Data 'contact' to requires field of Custom Data 'player'
-
 ![Add Requires Custom Data](\img\docs\core-components\custom-data\01-add-other-custom-data-to-require-field.png)
 
 In Custom Data 'contact' we do

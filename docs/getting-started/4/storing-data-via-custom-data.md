@@ -8,160 +8,149 @@ slug: /getting-started/storing-data-via-custom-data
 
 A CustomerData is built on top of a [Mongodb](https://www.mongodb.com/)'s collection and based on [Mongoose](https://mongoosejs.com/docs/) schema and apis. We can define our schnema which including indexing via JSON. We can insert or find data in the collection via Typescript api.
 
-## How to use Custom Data?
+## How to create Custom Data?
 
 1. Create Custom Data by go to Custom Data menu on sidebar and click on New custom data button on top righ
-
-![Custom Data list](\img\docs\getting-started\4\01-custom-data-list.png)
-
+   ![Custom Data list](\img\docs\getting-started\4\01-custom-data-list.png)
 
 2. Input Custom Data name "playerAssets" and description
-
-![New Custom Data](\img\docs\getting-started\4\02-new-custom-data.png)
-
-
+   ![New Custom Data](\img\docs\getting-started\4\02-new-custom-data.png)
 
 3. From Custom Data list, click on the new Custom Data "playerAssets" you just created
+   ![Custom Data list](\img\docs\getting-started\4\03-custom-data-list.png)
+   It will bring you to Custom Data detail page
+   ![Custom Data Detail](\img\docs\getting-started\4\04-custom-data-detail.png)
 
-![Custom Data list](\img\docs\getting-started\4\03-custom-data-list.png)
+## Update Custom Data's schema
 
-It will bring you to Custom Data detail page
-![Custom Data Detail](\img\docs\getting-started\4\04-custom-data-detail.png)
+1. Edit Schema to following json
 
+   ```json
+   {
+     "definitions": {
+       "playerId": {
+         "type": "ObjectId",
+         "unique": true
+       },
+       "status": {
+         "type": "String"
+       },
+       "coin": {
+         "type": "Number",
+         "default": 99
+       }
+     },
+     "options": {},
+     "indexes": [],
+     "extends": "",
+     "inheritOptions": {}
+   }
+   ```
 
-4. Edit Schema to following json
+   ![Defined Schema and index](\img\docs\getting-started\4\05-custom-data-fix-schema.png)
+   Then click Save.
 
-```json
-{
-  "definitions": {
-    "playerId": {
-      "type": "ObjectId",
-      "unique": true
-    },
-    "status": {
-      "type": "String"
-    },
-    "coin": {
-      "type": "Number",
-      "default": 99
-    }
-  },
-  "options": {},
-  "indexes": [],
-  "extends": "",
-  "inheritOptions": {}
-}
-```
+   Since we set unique index to playerId field, so we need to press Create Index button
+   ![Create index index](\img\docs\getting-started\4\05-custom-data-create-index.png)
+   You will see playerId show up as index
 
-![Defined Schema and index](\img\docs\getting-started\4\05-custom-data-fix-schema.png)
-Then click Save.
+   Now the Custom Data is ready to use
 
-Since we set unique index to playerId field, so we need to press Create Index button
-![Create index index](\img\docs\getting-started\4\05-custom-data-create-index.png)
-You will see playerId show up as index
+## How to use Custom Data's apis via code?
 
-Now the Custom Data is ready to use
+1. Write Endpoint to create data to the Custom Data.
+   Create endpoint with following parameter in the picture below
+   ![create endpoint to test](\img\docs\getting-started\4\06-create-player-asset-endpoint.png)
 
+   Edit endpoint script to following code
 
+   ```typescript
+   import { Request, Response, customData } from "gamedrive";
 
-5. Write Endpoint to create data to the Custom Data.
+   export default async function (request: Request, response: Response) {
+     try {
+       const playerId = request.playerId;
+       const status = request.args.status;
+       const coin = request.args.coin;
+       const findResult = await customData.findOne("playerAssets", {
+         playerId: playerId,
+       });
 
-Create endpoint with following parameter in the picture below
+       if (!findResult) {
+         const createResult = await customData.create("playerAssets", {
+           playerId: playerId,
+           status: status,
+           coin: coin,
+         });
+         createResult["created"] = true;
+         response.send(createResult);
+       } else {
+         const updateResult = await customData.updateOne(
+           "playerAssets",
+           {
+             playerId: playerId,
+           },
+           {
+             status: status,
+             coin: coin,
+           }
+         );
 
-![create endpoint to test](\img\docs\getting-started\4\06-create-player-asset-endpoint.png)
+         findResult.status = status;
+         findResult.coin = coin;
+         findResult["updated"] = true;
+         response.send(findResult);
+       }
+     } catch (error) {
+       response.sendError(error);
+     }
+   }
+   ```
 
-Edit endpoint script to following code
+   ![edit endpoint code to test](\img\docs\getting-started\4\07-update-endpoint-test-custom-data-code.png)
 
-```typescript
-import { Request, Response, customData } from "gamedrive";
+   Go back to the endpoint detail page. Then send test request to see the result created
+   ![Send test create custom data](\img\docs\getting-started\4\08-send-create-custom-data-test.png)
+   Send test request again with different value you will see different result updated
+   ![Send test create custom data](\img\docs\getting-started\4\08-send-create-custom-data-test2.png)
+   Notice the created and updated flag of the response
 
-export default async function (request: Request, response: Response) {
-  try {
-    const playerId = request.playerId;
-    const status = request.args.status;
-    const coin = request.args.coin;
-    const findResult = await customData.findOne("playerAssets", {
-      playerId: playerId,
-    });
+## How to browse data of Custom Data?
 
-    if (!findResult) {
-      const createResult = await customData.create("playerAssets", {
-        playerId: playerId,
-        status: status,
-        coin: coin,
-      });
-      createResult["created"] = true
-      response.send(createResult);
-    } else {
-      const updateResult = await customData.updateOne("playerAssets", {
-        playerId: playerId,
+1. Browse you Custom Data's data via web ui.
 
-      }, {
-        status: status,
-        coin: coin,
-      });
+   Go to "playerAssets" Custom Data detail page and click on Browse button on the top right
+   ![Go to browse](\img\docs\getting-started\4\09-go-to-browse-custom-data.png)
+   then click on Query button
 
-      findResult.status = status
-      findResult.coin = coin
-      findResult["updated"] = true
-      response.send(findResult);
-    }
-  } catch (error) {
-    response.sendError(error);
-  }
-}
-```
+   ![click browse to see data](\img\docs\getting-started\4\10-click-on-browse-button-will-see-the-data.png)
+   You will see your data that just updated by the endpoint
 
-![edit endpoint code to test](\img\docs\getting-started\4\07-update-endpoint-test-custom-data-code.png)
+   We can do more actions on Custom Data, see [how to manager data](/core-components/custom-data/manager-data-of-custom-data) for more detail.
 
-Go back to the endpoint detail page. Then send test request to see the result created
+2. Write another Endpoint to find data, note that they need to set index for the fields
+   ![Create get player asset](\img\docs\getting-started\4\11-create-get-player-asset-endpoint.png)
 
-![Send test create custom data](\img\docs\getting-started\4\08-send-create-custom-data-test.png)
+   Edit the endpoint code to following
 
-Send test request again with different value you will see different result updated
+   ```typescript
+   import { Request, Response, customData } from "gamedrive";
 
-![Send test create custom data](\img\docs\getting-started\4\08-send-create-custom-data-test2.png)
+   export default async function (request: Request, response: Response) {
+     try {
+       const playerId = request.playerId;
+       const playerAssetData = await customData.findOne("playerAssets", {
+         playerId: playerId,
+       });
+       response.send(playerAssetData);
+     } catch (error) {
+       response.sendError(error);
+     }
+   }
+   ```
 
-Notice the created and updated flag of the response
+   ![edit get player asset code](\img\docs\getting-started\4\12-edit-get-player-asset-endpoint-code.png)
 
- 
-
-6. Browse you Custom Data's data via web ui.
-
-Go to "playerAssets" Custom Data detail page and click on Browse button on the top right
-
-![Go to browse](\img\docs\getting-started\4\09-go-to-browse-custom-data.png)
-
-then click on Query button
-
-![click browse to see data](\img\docs\getting-started\4\10-click-on-browse-button-will-see-the-data.png)
-You will see your data that just updated by the endpoint
- 
-
-7. Write another Endpoint to find data, note that they need to set index for the fields
-
-![Create get player asset](\img\docs\getting-started\4\11-create-get-player-asset-endpoint.png)
-
-Edit the endpoint code to following
-
-```typescript
-import { Request, Response, customData } from "gamedrive";
-
-export default async function (request: Request, response: Response) {
-  try {
-    const playerId = request.playerId;
-    const playerAssetData = await customData.findOne("playerAssets", {
-      playerId: playerId,
-    });
-    response.send(playerAssetData);
-  } catch (error) {
-    response.sendError(error);
-  }
-}
-```
-
-![edit get player asset code](\img\docs\getting-started\4\12-edit-get-player-asset-endpoint-code.png)
-
-Go back to the endpoint. Then send test reques to see the result
-
-![send get player asset test request](\img\docs\getting-started\4\13-sed-get-player-asset-endpoint-test-request.png)
+   Go back to the endpoint. Then send test reques to see the result
+   ![send get player asset test request](\img\docs\getting-started\4\13-sed-get-player-asset-endpoint-test-request.png)
+   We will see the data from the Custom Data query out by the endpoint

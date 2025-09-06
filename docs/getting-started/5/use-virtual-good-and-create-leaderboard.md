@@ -11,163 +11,157 @@ One VirtualGood can collect number values of many players. One player can have o
 
 ## How to use Virtual Good?
 
-1. Create a Virtual Good by go to Virtual Goods menu on sidebar and click on New virtual good button on top righ
+1.  Create a Virtual Good by go to Virtual Goods menu on sidebar and click on New virtual good button on top righ
+    ![Virtual Good list](\img\docs\getting-started\5\01-virtual-good-list.png)
 
-![Virtual Good list](\img\docs\getting-started\5\01-virtual-good-list.png)
+    Input virtual good detail by following infomation
 
-Input virtual good detail by following infomation
-| Name | Type |
-|----------|--------|
-| `name` | score |
-| `description`| player score |
-| `Start Value`| 20 |
+    | Name          | Type         |
+    | ------------- | ------------ |
+    | `name`        | score        |
+    | `description` | player score |
+    | `Start Value` | 20           |
 
-![Create Virtual Good](\img\docs\getting-started\5\02-new-virtual-good.png)
-Then click Create
+    ![Create Virtual Good](\img\docs\getting-started\5\02-new-virtual-good.png)
+    Then click Create
 
-It will bring you back to Virtual Good list page
-![Virtual Good list exist](\img\docs\getting-started\5\03-virtual-good-list-exist.png)
+    It will bring you back to Virtual Good list page
+    ![Virtual Good list exist](\img\docs\getting-started\5\03-virtual-good-list-exist.png)
 
+## Call Virtual Good's apis
 
-2. Create new Endpoint to get data from virtual good
+1.  Create new Endpoint to get data from virtual good
+    ![Get Score endpoint create](\img\docs\getting-started\5\04-get-score-endpoint-create.png)
 
-![Get Score endpoint create](\img\docs\getting-started\5\04-get-score-endpoint-create.png)
+2.  Edit endpoint script to following code
 
-Edit endpoint script to following code
+    ```typescript
+    import { Request, Response, virtualGood } from "gamedrive";
 
-```typescript
-import { Request, Response, virtualGood } from "gamedrive";
+    export default async function (request: Request, response: Response) {
+      try {
+        const scoreResult = await virtualGood.getValue(
+          "score",
+          request.playerId
+        );
+        response.send(scoreResult);
+      } catch (error) {
+        response.sendError(error);
+      }
+    }
+    ```
 
-export default async function (request: Request, response: Response) {
-  try {
-    const scoreResult = await virtualGood.getValue("score", request.playerId);
-    response.send(scoreResult);
-  } catch (error) {
-    response.sendError(error);
-  }
-}
-```
-
-![Get Score endpoint code](\img\docs\getting-started\5\05-endpoint-code-get-virtual-good.png)
-
-Send test quest to see the result
-
-![Get Score endpoint result](\img\docs\getting-started\5\06-endpoint-get-score-test.png)
-You can see it return value = 20 as we set default value for the virtual good when create
+    ![Get Score endpoint code](\img\docs\getting-started\5\05-endpoint-code-get-virtual-good.png)
+    Send test quest to see the result
+    ![Get Score endpoint result](\img\docs\getting-started\5\06-endpoint-get-score-test.png)
+    You can see it return value = 20 as we set default value for the virtual good when create
 
 ## How to create leaderboard via virtual good?
 
 1. Create new Endpoint to set score value
+   ![Create get score endpoint](\img\docs\getting-started\5\07-create-set-score-endpoint.png)
 
-![Create get score endpoint](\img\docs\getting-started\5\07-create-set-score-endpoint.png)
+2. Edit endpoint script to following code
 
-Edit endpoint script to following code
+   ```typescript
+   import { Request, Response, virtualGood } from "gamedrive";
 
-```typescript
-import { Request, Response, virtualGood } from "gamedrive";
+   export default async function (request: Request, response: Response) {
+     try {
+       const playerId = request.playerId;
+       const score = request.args.score;
+       const result = await virtualGood.setValue("score", playerId, score);
+       response.send(result);
+     } catch (error) {
+       response.sendError(error);
+     }
+   }
+   ```
 
-export default async function (request: Request, response: Response) {
-  try {
-    const playerId = request.playerId;
-    const score = request.args.score;
-    const result = await virtualGood.setValue("score", playerId, score);
-    response.send(result);
-  } catch (error) {
-    response.sendError(error);
-  }
-}
-```
+   ![Update get score endpoint code](\img\docs\getting-started\5\08-create-set-score-endpoint-update-code.png)
 
-![Update get score endpoint code](\img\docs\getting-started\5\08-create-set-score-endpoint-update-code.png)
+3. Create data for 2 players and use 2 player to send request
 
-2. Create data for 2 players and use 2 player to send request
+   Go to Players menu on sidebar and click on New Preview Player on top right
+   ![players page](\img\docs\getting-started\5\09-create-new-test-player1.png)
 
-Go to Players menu on sidebar and click on New Preview Player on top right
+   Insert new player and and click Create
+   ![Create new player](\img\docs\getting-started\5\10-create-new-test-player2.png)
 
-![players page](\img\docs\getting-started\5\09-create-new-test-player1.png)
+   It will bring back to Players page. Then click Query button you will see 2 players appear
+   ![Query for players](\img\docs\getting-started\5\11-create-new-test-player-see-2-players.png)
 
-Insert new player and and click Create
+   **Copy both player \_id to be used**
 
-![Create new player](\img\docs\getting-started\5\10-create-new-test-player2.png)
+4. Call setScore endpoint by both players by different score value
+   | Player | Score |
+   |----------|--------|
+   | `player1` | 99 |
+   | `player2`| 100 |
 
-It will bring back to Players page. Then click Query button you will see 2 players appear
+   Player1's result
+   ![Set player 1 score](\img\docs\getting-started\5\12-call-set-score-player1.png)
 
-![Query for players](\img\docs\getting-started\5\11-create-new-test-player-see-2-players.png)
+   Player2's result
+   ![Set player 2 score](\img\docs\getting-started\5\13-call-set-score-player2.png)
 
-Copy both player \_id to be used
+5. Create new endpoint name "getScoreLeaderboard" and write logic to create leaderboard
 
-Call setScore endpoint for both of player by different scoe value
-| Player | Score |
-|----------|--------|
-| `player1` | 99 |
-| `player2`| 100 |
+   Set endpoint parameters to following data
+   | Name | Type |
+   |----------|--------|
+   | `limit` | number |
+   | `skip`| string |
 
-Player1's result
-![Set player 1 score](\img\docs\getting-started\5\12-call-set-score-player1.png)
+   ![getScoreLeaderboard endpoint params](\img\docs\getting-started\5\14-create-get-score-leaderboard.png)
 
-Player2's result
-![Set player 2 score](\img\docs\getting-started\5\13-call-set-score-player2.png)
+   Edit script to following code
 
+   ```typescript
+   import { Request, Response, virtualGood } from "gamedrive";
 
-3. Create new endpoint name "getScoreLeaderboard" and write logic to create leaderboard
+   export default async function (request: Request, response: Response) {
+     try {
+       const incomingPlayerId = request.playerId;
+       const limit = request.args.limit;
+       const skip = request.args.skip;
 
-Set endpoint parameters to following data
-| Name | Type |
-|----------|--------|
-| `limit` | number |
-| `skip`| string |
+       const virtualGoodScore = "score";
+       const playerRank = await virtualGood.getPlayerRank(
+         virtualGoodScore,
+         incomingPlayerId
+       );
+       const topPlayers = await virtualGood.findTopRankPlayers(
+         virtualGoodScore,
+         limit,
+         skip,
+         -1
+       );
 
-![getScoreLeaderboard endpoint params](\img\docs\getting-started\5\14-create-get-score-leaderboard.png)
+       const data = {
+         playerRank,
+         topPlayers,
+       };
 
-Edit script to following code
+       response.send(data);
+     } catch (error) {
+       response.sendError(error);
+     }
+   }
+   ```
 
-```typescript
-import { Request, Response, virtualGood } from "gamedrive";
+   ![Edit Endpoint Code](\img\docs\getting-started\5\15-create-get-score-leaderboard-code.png)
 
-export default async function (request: Request, response: Response) {
-  try {
-    const incomingPlayerId = request.playerId;
-    const limit = request.args.limit;
-    const skip = request.args.skip;
+   Send test request by Player2's \_id and you will see similar result to following picture
+   ![Send test request getScoreLeaderboard](\img\docs\getting-started\5\16-send-get-score-leaderboard-test-request.png)
 
-    const virtualGoodScore = "score";
-    const playerRank = await virtualGood.getPlayerRank(
-      virtualGoodScore,
-      incomingPlayerId
-    );
-    const topPlayers = await virtualGood.findTopRankPlayers(
-      virtualGoodScore,
-      limit,
-      skip,
-      -1
-    );
+   To get players name and profilePictureUrl you can checkout gamedrive's player module in core-component.
+   Example script.
 
-    const data = {
-      playerRank,
-      topPlayers,
-    };
-
-    response.send(data);
-  } catch (error) {
-    response.sendError(error);
-  }
-}
-```
-
-![Edit Endpoint Code](\img\docs\getting-started\5\15-create-get-score-leaderboard-code.png)
-
-Send test request by Player2's \_id and you will see similar result to following picture
-
-![Send test request getScoreLeaderboard](\img\docs\getting-started\5\16-send-get-score-leaderboard-test-request.png)
-
-To get players name and profilePictureUrl you can checkout gamedrive's player module in core-component.
-
-Example script
-
-```typescript
-const gamedrivePlayers = await player.find({
-  _id: {
-    $in: playerIds,
-  },
-});
-```
+   ```typescript
+   const gamedrivePlayers = await player.find({
+     _id: {
+       $in: playerIds,
+     },
+   });
+   ```
