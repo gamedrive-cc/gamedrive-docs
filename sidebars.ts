@@ -174,6 +174,11 @@ const sidebars: SidebarsConfig = {
           id: 'in-depth/export-import',
           label: 'Export and Import',
         },
+        {
+          type: 'doc',
+          id: 'in-depth/caution-and-limitation',
+          label: 'Limitation and Caution',
+        },
 
       ],
     },
