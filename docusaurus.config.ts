@@ -48,7 +48,10 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        blog: false, // Optional: disable blog
+        blog: {
+          showReadingTime: true,
+          routeBasePath: 'blog', // 👈 this controls the URL
+        },
         // pages: false, // Optional: disable static pages
       } satisfies Preset.Options,
     ],
@@ -74,6 +77,11 @@ const config: Config = {
           docId: 'api/intro',
           position: 'left',
           label: 'API',
+        },
+        {
+          to: '/blog',
+          label: 'Updates',
+          position: 'right',
         },
         {
           href: 'https://github.com/gamedrive-cc',

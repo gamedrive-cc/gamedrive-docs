@@ -79,3 +79,7 @@ export default async function (request: Request, response: Response) {
   }
 }
 ```
+
+### Support
+
+We can use transactions for both customData and virtualGood's api
