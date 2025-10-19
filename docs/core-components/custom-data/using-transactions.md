@@ -82,4 +82,4 @@ export default async function (request: Request, response: Response) {
 
 ### Support
 
-We can use transactions for both customData and virtualGood's api
+Transactions can be used with both Custom Data and Virtual Goods APIs — even together within the same operation.
