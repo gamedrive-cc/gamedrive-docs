@@ -43,11 +43,11 @@ declare type VirtualGoodResult = {
 }
 
 declare interface VirtualGood {
-  getValue(name: string, playerId: string): Promise<VirtualGoodResult>
-  setValue(name: string, playerId: string, value: number): Promise<VirtualGoodResult>;
-  addValue(name: string, playerId: string, value: number): Promise<VirtualGoodResult>;
-  getPlayerRank(name: string, playerId: string, sort: number = -1): Promise<PlayerRank>
-  findTopRankPlayers(name: string, limit: number, skip: number, sort: number = -1): Promise<PlayerValue[]>
+  getValue(name: string, playerId: string, options?: Options): Promise<VirtualGoodResult>
+  setValue(name: string, playerId: string, value: number, options?: Options): Promise<VirtualGoodResult>;
+  addValue(name: string, playerId: string, value: number, options?: Options): Promise<VirtualGoodResult>;
+  getPlayerRank(name: string, playerId: string, sort: number = -1, options?: Options): Promise<PlayerRank>
+  findTopRankPlayers(name: string, limit: number, skip: number, sort: number = -1, options?: Options): Promise<PlayerValue[]>
 }
 
 export const virtualGood: VirtualGood = {}
@@ -64,23 +64,34 @@ declare interface MongooseDeleteResult {
   deletedCount: number
 }
 
-declare interface CustomData {
-  create(name: string, docs: any, options?: any): Promise<any>
-  findOne(name: string, conditions: any, projection?: any, options?: any): Promise<any>
-  insertMany(name: string, docs: any[], options?: any): Promise<any[]>
-  updateOne(name: string, filter: any, update?: any, options?: any): Promise<MongooseUpdateResult>
-  updateMany(name: string, filter: any, update: any, options?: any): Promise<MongooseUpdateResult>
-  find(name: string, filter: any, projection?: any, options?: any): Promise<any[]>
-  findOneAndUpdate(name: string, conditions: any, update: any, options?: any): Promise<any>
-  findOneAndDelete(name: string, conditions: any, options?: any): Promise<any>
-  findById(name: string, _id: any, projection?: any, options?: any): Promise<any>
-  findByIdAndUpdate(name: string, _id: any, update: any, options?: any): Promise<any>
-  findByIdAndDelete(name: string, _id: any, options?: any): Promise<any>
-  countDocuments(name: string, filter?: any): Promise<number>
-  estimatedDocumentCount(name: string, options?: any): Promise<number>
-  deleteMany(name: string, conditions?: any, options?: any): Promise<MongooseDeleteResult>
+declare interface Session {
+  id: string
 }
 
+declare interface Options {
+  session?: Session
+  [key: string]: any
+}
+
+declare interface CustomData {
+  create(name: string, docs: any, options?: Options): Promise<any>
+  findOne(name: string, conditions: any, projection?: any, options?: Options): Promise<any>
+  insertMany(name: string, docs: any[], options?: Options): Promise<any[]>
+  updateOne(name: string, filter: any, update?: any, options?: Options): Promise<MongooseUpdateResult>
+  updateMany(name: string, filter: any, update: any, options?: Options): Promise<MongooseUpdateResult>
+  find(name: string, filter: any, projection?: any, options?: Options): Promise<any[]>
+  findOneAndUpdate(name: string, conditions: any, update: any, options?: Options): Promise<any>
+  findOneAndDelete(name: string, conditions: any, options?: Options): Promise<any>
+  findById(name: string, _id: any, projection?: any, options?: Options): Promise<any>
+  findByIdAndUpdate(name: string, _id: any, update: any, options?: Options): Promise<any>
+  findByIdAndDelete(name: string, _id: any, options?: Options): Promise<any>
+  countDocuments(name: string, filter?: any, options?: Options): Promise<number>
+  estimatedDocumentCount(name: string, options?: Options): Promise<number>
+  deleteMany(name: string, conditions?: any, options?: Options): Promise<MongooseDeleteResult>
+  startSessionWithTransaction(): Promise<Session>
+  commitTransactionAndEndSession(session: Session): Promise<void>
+  abortTransactionAndEndSession(session: Session): Promise<void>
+}
 
 export declare const customData: CustomData = {
 }

@@ -7,7 +7,7 @@ title: "Using VirtualGood"
 
 You have to create new VirtualGood name `diamond` before run following endpoint script
 
-```ts title="endpoint: getSetAddVirtualGood"
+```typescript title="endpoint: getSetAddVirtualGood"
 import { virtualGood, Request, Response } from 'gamedrive';
 
 // need to be async function

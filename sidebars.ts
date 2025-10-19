@@ -115,6 +115,11 @@ const sidebars: SidebarsConfig = {
               id: 'core-components/custom-data/manager-data-of-custom-data',
               label: 'Manage data of Custom Data',
             },
+            {
+              type: 'doc',
+              id: 'core-components/custom-data/using-transactions',
+              label: 'Using transactions',
+            },
           ],
           'Virtual Goods': [
             {
