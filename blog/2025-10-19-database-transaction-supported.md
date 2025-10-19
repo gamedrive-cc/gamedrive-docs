@@ -8,6 +8,6 @@ We’re excited to announce that **database transactions** are now officially su
 
 This means your operations can now be executed **atomically** — ensuring that all database actions within a transaction either complete successfully together, or are all rolled back if something goes wrong.
 
-[Learn more...](core-components/custom-data/using-transactions)
+[Learn more...](/core-components/custom-data/using-transactions)
 
 ---
