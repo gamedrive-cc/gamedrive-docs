@@ -158,6 +158,13 @@ const sidebars: SidebarsConfig = {
             }],
         }
       ],
+      'SDKs': [
+        {
+          type: 'doc',
+          id: 'sdks/unity-sdk',
+          label: 'Unity SDK',
+        }
+      ],
       'In-depth': [
         {
           type: 'doc',

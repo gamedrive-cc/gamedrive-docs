@@ -8,8 +8,7 @@ title: "Custom Data in details"
 Check this [Custom Data getting started](/getting-started/storing-data-via-custom-data)
 
 ## Custom Data's Schema
-
-Custom Data's schema is based on [mongoose 6.1.3](https://mongoosejs.com/docs/guide.html)'s schema but convert way define it from javascript to json string. It design to have feature rich, reuseable and extensible.
+Custom Data's schema is based on [mongoose 8.15.1](https://mongoosejs.com/docs/guide.html)'s schema but convert way of definding it from javascript to json string. It design to have feature rich, reuseable and extensible.
 
 Schema Features
 
