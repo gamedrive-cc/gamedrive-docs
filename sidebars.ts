@@ -137,6 +137,11 @@ const sidebars: SidebarsConfig = {
               type: 'doc',
               id: 'core-components/rooms/introduction',
               label: 'Introduction',
+            },
+            {
+              type: 'doc',
+              id: 'core-components/rooms/settings-json',
+              label: `Room's settings.json`,
             }
           ],
           'Action': [
