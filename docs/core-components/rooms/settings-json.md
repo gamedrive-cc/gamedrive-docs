@@ -1,13 +1,13 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: Room's settings.json
 ---
 
 ## What is settings.json?
 
-We can create settings.json in side rooms folder for example /rooms/myRoom/settings.json. THis file store settings value of the room.
+We can create settings.json in side rooms folder for example /rooms/myRoom/settings.json. This file store settings of the room.
 
-Here is default module.json
+Here is default settings.json
 
 ```json title="settings.json"
 {

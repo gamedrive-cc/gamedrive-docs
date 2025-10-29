@@ -65,7 +65,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           id: 'getting-started/8/connect-custom-websocket-room-via-unity-engine',
-          label: 'Connect to Custom WebSocket Room via Unity Engine',
+          label: 'Connect to Custom Room via Unity Engine',
         },
       ],
       'Core Components': [
@@ -137,6 +137,11 @@ const sidebars: SidebarsConfig = {
               type: 'doc',
               id: 'core-components/rooms/introduction',
               label: 'Introduction',
+            },
+            {
+              type: 'doc',
+              id: 'core-components/rooms/definitions-json',
+              label: `Room's definitions.json`,
             },
             {
               type: 'doc',
