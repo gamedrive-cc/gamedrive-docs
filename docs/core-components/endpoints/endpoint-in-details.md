@@ -74,6 +74,6 @@ Notice
 
 ### Use cases
 
-- server-side verification ads (SSV)
+- callback url for third party services, such as, Admob server-side verification ads (SSV) or Steam transaction callback.
 - news update
-- check minimun game client version required by game backend server.
+- check minimun game client version required by game backend server before allow to login.
