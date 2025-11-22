@@ -59,7 +59,7 @@ You can defind paramers and write custom logic for endpoints.
            message: request.args.message,
          });
        } else {
-         throw "don'tknow how to handle action :" + action;
+         throw "Unable to handle action :" + action;
        }
      } catch (error) {
        response.sendError(error);
